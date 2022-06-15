@@ -14,7 +14,7 @@ const opperation=document.querySelector(".opperation");
 const result=document.querySelector(".result");
 
 //Creating events
-//window.addEventListener("keydown", keyboardNumber);
+window.addEventListener("keydown", keyboardNumber);
 equals.addEventListener("click",evaluate);
 clear.addEventListener("click", clearFields);
 del.addEventListener("click",deleteLast);
@@ -162,4 +162,36 @@ function multiply(a,b) {
 
 function devide(a,b) {
     return a/b;
+}
+
+
+function keyboardNumber(e){
+
+    if(e.key >= 0 && e.key<=9){
+        append(e.key);
+    }else if(e.key==='.'){
+        addPoint();
+
+    }else if(e.key==='=' || e.key==='Enter'){
+
+        evaluate();
+    }else if(e.key==="Backspace"){
+        deleteLast();
+    }else if(e.key === "Escape"){
+        clearFields();
+    }else if(e.key==='+' || e.key==='-' || e.key==='*' || e.key==='/'){
+        operatorSet(convert(e.key));
+    }
+}
+
+function convert(key){
+    if (key==='+') {
+        return "+";
+    } else if(key==='-'){
+        return "-";
+    }else if(key==='*'){
+        return "x";
+    }else{
+        return "÷";
+    }
 }
